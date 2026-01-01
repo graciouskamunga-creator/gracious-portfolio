@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import PageWrapper from "../components/pageWrapper";
 import SEO from "../components/SEO";
 import { useRef } from "react";
+import PageWrapper from "../components/PageWrapper";
 
 export default function About() {
   const ref = useRef(null);

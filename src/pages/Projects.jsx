@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import PageWrapper from "../components/pageWrapper";
+import PageWrapper from "../components/PageWrapper";
 import SEO from "../components/SEO";
 import { ExternalLink, Github } from "lucide-react";
 

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import PageWrapper from "../components/pageWrapper";
+import PageWrapper from "../components/PageWrapper";
 import SEO from "../components/SEO";
 import {
   Code2,
