@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import PageWrapper from "../components/PageWrapper";
+import PageWrapper from "../components/pageWrapper";
 import SEO from "../components/SEO";
 import { useRef } from "react";
 
