@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar({ darkMode, setDarkMode }) {
+export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -33,6 +33,12 @@ export default function Navbar({ darkMode, setDarkMode }) {
   }, [open]);
 
   const links = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
+
+  // unified toggle handler (this is the fix)
+  const handleThemeToggle = () => {
+    if (toggleTheme) toggleTheme();
+    else if (setDarkMode) setDarkMode(!darkMode);
+  };
 
   return (
     <>
@@ -79,7 +85,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
           <div className="md:hidden flex items-center gap-3">
 
             {/* Dark Mode Toggle */}
-            <button onClick={() => setDarkMode(!darkMode)} className="p-2">
+            <button onClick={handleThemeToggle} className="p-2">
               <img
                 src={
                   darkMode
@@ -138,7 +144,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
             className="fixed top-0 right-0 h-full w-72 bg-white dark:bg-gray-900 z-50 shadow-xl"
           >
             <ul className="flex flex-col pt-24">
-
               {links.map((item) => {
                 const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
                 const active = location.pathname === path;
@@ -158,7 +163,6 @@ export default function Navbar({ darkMode, setDarkMode }) {
                   </li>
                 );
               })}
-
             </ul>
           </motion.aside>
         )}
