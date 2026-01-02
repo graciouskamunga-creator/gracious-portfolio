@@ -1,45 +1,65 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import PageWrapper from '../components/pageWrapper';
-import SEO from '../components/SEO';
-import emailjs from '@emailjs/browser';
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import PageWrapper from "../components/pageWrapper";
+import SEO from "../components/SEO";
+import Navbar from "../components/Navbar";
+import emailjs from "@emailjs/browser";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
+
 export default function Contact() {
   const formRef = useRef();
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState("");
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  /* Dark mode persistence */
+  React.useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus('Sending...');
+    setStatus("Sending...");
 
     try {
       await emailjs.sendForm(
-        'service_etj7sjz',
-        'template_6g9lf3j',
+        "service_etj7sjz",
+        "template_6g9lf3j",
         formRef.current,
-        'dftHjFDGwqNO0-NLh'
+        "dftHjFDGwqNO0-NLh"
       );
 
-      setStatus('Message sent successfully!');
+      setStatus("Message sent successfully!");
       formRef.current.reset();
     } catch (error) {
       console.error(error);
-      setStatus('Failed to send message. Please try again.');
+      setStatus("Failed to send message. Please try again.");
     }
   };
 
   return (
     <PageWrapper>
+      {/* NAVBAR */}
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
       <SEO
         title="Gracious Kamunga | Contact"
         description="Get in touch with Gracious Kamunga, Full-Stack Software Engineer."
       />
 
+      {/* CONTACT FORM */}
       <motion.section
         className="flex justify-center py-12 px-4"
         initial="hidden"
@@ -85,9 +105,7 @@ export default function Contact() {
             </button>
           </form>
 
-          {status && (
-            <p className="mt-4 text-center text-sm">{status}</p>
-          )}
+          {status && <p className="mt-4 text-center text-sm">{status}</p>}
         </div>
       </motion.section>
     </PageWrapper>

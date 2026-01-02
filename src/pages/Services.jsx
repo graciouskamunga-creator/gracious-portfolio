@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PageWrapper from "../components/pageWrapper";
 import SEO from "../components/SEO";
+import Navbar from "../components/Navbar";
 import {
   Code2,
   Smartphone,
@@ -60,8 +62,25 @@ const item = {
 };
 
 export default function Services() {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
   return (
     <PageWrapper>
+      {/* NAVBAR */}
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
       <SEO
         title="Gracious Kamunga | Software Development Services"
         description="Web, mobile, backend, and cloud software development services by Gracious Kamunga, Full-Stack Software Developer."
@@ -116,10 +135,7 @@ export default function Services() {
         </div>
 
         {/* Call to Action */}
-        <motion.div
-          variants={item}
-          className="mt-16 text-center"
-        >
+        <motion.div variants={item} className="mt-16 text-center">
           <p className="text-slate-600 dark:text-slate-300 mb-6">
             Have a project in mind or looking for a reliable developer?
           </p>

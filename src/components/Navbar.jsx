@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Navbar({ darkMode, toggleTheme }) {
+export default function Navbar({ darkMode, setDarkMode }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -79,7 +79,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
           <div className="md:hidden flex items-center gap-3">
 
             {/* Dark Mode Toggle */}
-            <button onClick={toggleTheme} className="p-2">
+            <button onClick={() => setDarkMode(!darkMode)} className="p-2">
               <img
                 src={
                   darkMode
@@ -114,7 +114,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
         </div>
       </motion.nav>
 
-      {/* BACKDROP BLUR */}
+      {/* BACKDROP */}
       <AnimatePresence>
         {open && (
           <motion.div

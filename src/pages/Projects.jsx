@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PageWrapper from "../components/pageWrapper";
 import SEO from "../components/SEO";
+import Navbar from "../components/Navbar";
 import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
@@ -54,16 +55,31 @@ const projects = [
 
 export default function Projects() {
   const [active, setActive] = useState("All");
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
 
-  const categories = ["All", ...new Set(projects.map(p => p.category))];
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
+  const categories = ["All", ...new Set(projects.map((p) => p.category))];
   const filteredProjects =
     active === "All"
       ? projects
-      : projects.filter(p => p.category === active);
+      : projects.filter((p) => p.category === active);
 
   return (
     <PageWrapper>
+      {/* NAVBAR */}
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+
       <SEO
         title="Projects | Gracious Kamunga – Full-Stack Software Developer"
         description="Explore full-stack, mobile, and web development projects built with React, Flutter, C#, Firebase, and SQL."
@@ -82,7 +98,7 @@ export default function Projects() {
 
       {/* FILTERS */}
       <section className="mt-12 px-6 max-w-6xl mx-auto flex flex-wrap justify-center gap-3">
-        {categories.map(cat => (
+        {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActive(cat)}
@@ -115,9 +131,7 @@ export default function Projects() {
                 {project.category}
               </span>
 
-              <h3 className="text-xl font-bold mt-2">
-                {project.title}
-              </h3>
+              <h3 className="text-xl font-bold mt-2">{project.title}</h3>
 
               <p className="text-slate-600 dark:text-slate-400 text-sm mt-3">
                 {project.desc}
@@ -125,7 +139,7 @@ export default function Projects() {
 
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2 mt-4">
-                {project.tech.map(t => (
+                {project.tech.map((t) => (
                   <span
                     key={t}
                     className="text-xs px-3 py-1 bg-indigo-100 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 rounded-full"
@@ -162,9 +176,7 @@ export default function Projects() {
 
       {/* CTA */}
       <section className="mt-28 text-center px-6">
-        <h2 className="text-2xl font-semibold mb-3">
-          Want to Collaborate?
-        </h2>
+        <h2 className="text-2xl font-semibold mb-3">Want to Collaborate?</h2>
         <p className="text-slate-600 dark:text-slate-400 mb-6">
           I'm open to full-time roles, freelance projects, and impactful software
           collaborations.
