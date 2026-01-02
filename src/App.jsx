@@ -9,7 +9,7 @@ import Contact from "./pages/Contact";
 import Skills from "./pages/Skills";
 import Services from "./pages/Services";
 
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingActionButton from "./components/FloatingActionButton";
 

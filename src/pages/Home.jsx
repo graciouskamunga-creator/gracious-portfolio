@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SEO from "../components/SEO";
 import PageWrapper from "../components/pageWrapper";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 
 const heroVariants = {
   hidden: { opacity: 0, y: 20 },

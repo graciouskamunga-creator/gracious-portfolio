@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import PageWrapper from "../components/pageWrapper";
 import SEO from "../components/SEO";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar";
 import emailjs from "@emailjs/browser";
 
 const fadeUp = {
