@@ -13,7 +13,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
     setOpen(false);
   }, [location.pathname]);
 
-  /* Sticky shadow on scroll (NO blur, NO transparency) */
+  /* Shadow on scroll ONLY (no blur, no transparency) */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -38,28 +38,29 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
     else if (setDarkMode) setDarkMode(!darkMode);
   };
 
-  const NAV_HEIGHT = "h-16"; // used to offset dropdown
-
   return (
     <>
       {/* NAVBAR */}
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-50 ${NAV_HEIGHT} ${
-          scrolled
-            ? "bg-white dark:bg-gray-900 shadow-md"
-            : "bg-white dark:bg-gray-900"
-        }`}
+        style={{
+          backdropFilter: "none",
+          WebkitBackdropFilter: "none",
+          filter: "none",
+        }}
+        className={`fixed top-0 w-full z-50 h-16 ${
+          scrolled ? "shadow-md" : ""
+        } bg-white dark:bg-gray-900`}
       >
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
 
-          {/* LEFT: LOGO */}
+          {/* LOGO */}
           <h1 className="font-bold text-lg md:text-xl whitespace-nowrap">
             GRACIOUS KAMUNGA
           </h1>
 
-          {/* RIGHT: Desktop menu */}
+          {/* DESKTOP MENU */}
           <ul className="hidden md:flex gap-6 items-center">
             {links.map((item) => {
               const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
@@ -80,8 +81,8 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
               );
             })}
 
-            {/* Dark mode (desktop) */}
-            <button onClick={handleThemeToggle} className="ml-2 p-2">
+            {/* Dark mode desktop */}
+            <button onClick={handleThemeToggle} className="p-2">
               <img
                 src={
                   darkMode
@@ -94,7 +95,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
             </button>
           </ul>
 
-          {/* RIGHT: Mobile controls (Hamburger + Dark mode together) */}
+          {/* MOBILE CONTROLS (RIGHT) */}
           <div className="md:hidden flex items-center gap-3">
             <button onClick={handleThemeToggle} className="p-2">
               <img
@@ -110,7 +111,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
 
             <button
               onClick={() => setOpen(!open)}
-              className="relative w-8 h-8 flex flex-col justify-center items-center"
+              className="w-8 h-8 flex flex-col justify-center items-center"
             >
               <motion.span
                 animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
@@ -129,15 +130,20 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
         </div>
       </motion.nav>
 
-      {/* MOBILE DROPDOWN (STARTS BELOW NAVBAR – NO OVERLAP) */}
+      {/* MOBILE MENU – SOLID, NO OPACITY, NO BLUR */}
       <AnimatePresence>
         {open && (
           <motion.div
             ref={menuRef}
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
+            exit={{ y: -10 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              backdropFilter: "none",
+              WebkitBackdropFilter: "none",
+              filter: "none",
+            }}
             className="fixed top-16 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
           >
             <ul className="flex flex-col py-4">
@@ -149,7 +155,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
                   <li key={item}>
                     <Link
                       to={path}
-                      className={`block px-6 py-4 transition ${
+                      className={`block px-6 py-4 ${
                         active
                           ? "bg-indigo-600 text-white"
                           : "hover:bg-gray-100 dark:hover:bg-gray-800"
