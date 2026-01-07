@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import SEO from "../components/SEO";
-import Navbar from "../components/navbar";
+//import Navbar from "../components/navbar";
 
 import {
   Code2,

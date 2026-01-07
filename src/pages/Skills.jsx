@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
-import Navbar from "../components/navbar";
+//import Navbar from "../components/navbar";
 
 const skills = [
   {
