@@ -49,7 +49,7 @@ const projects = [
     tech: ["PHP", "MySQL", "Bootstrap", "HTML"],
     impact: "Digitized legal service access for wider community reach.",
     link: "#",
-    github: "#",
+    github: "https://github.com/graciouskamunga-creator/Legal-Aid-",
   },
 ];
 

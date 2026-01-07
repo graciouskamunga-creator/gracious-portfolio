@@ -34,7 +34,6 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
 
   const links = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
 
-  // unified toggle handler (this is the fix)
   const handleThemeToggle = () => {
     if (toggleTheme) toggleTheme();
     else if (setDarkMode) setDarkMode(!darkMode);
@@ -48,19 +47,55 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
         animate={{ y: 0 }}
         className={`fixed top-0 w-full z-50 transition-all ${
           scrolled
-            ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur shadow-md"
+            ? "bg-white dark:bg-gray-900 shadow-md"
             : "bg-white dark:bg-gray-900"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
 
-          {/* Logo */}
+          {/* LEFT: Hamburger (mobile only) */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setOpen(!open)}
+              className="relative w-8 h-8 flex flex-col justify-center items-center"
+            >
+              <motion.span
+                animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                className="w-6 h-[2px] bg-current mb-1"
+              />
+              <motion.span
+                animate={open ? { opacity: 0 } : { opacity: 1 }}
+                className="w-6 h-[2px] bg-current mb-1"
+              />
+              <motion.span
+                animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                className="w-6 h-[2px] bg-current"
+              />
+            </button>
+          </div>
+
+          {/* CENTER: Logo */}
           <h1 className="font-bold text-lg md:text-xl">
             GRACIOUS KAMUNGA
           </h1>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex gap-6">
+          {/* RIGHT: Dark mode (mobile) */}
+          <div className="md:hidden">
+            <button onClick={handleThemeToggle} className="p-2">
+              <img
+                src={
+                  darkMode
+                    ? "https://cdn-icons-png.flaticon.com/512/869/869869.png"
+                    : "https://cdn-icons-png.flaticon.com/512/6714/6714978.png"
+                }
+                className="w-5 h-5"
+                alt="theme"
+              />
+            </button>
+          </div>
+
+          {/* DESKTOP MENU */}
+          <ul className="hidden md:flex gap-6 items-center">
             {links.map((item) => {
               const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
               const active = location.pathname === path;
@@ -79,13 +114,8 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
                 </li>
               );
             })}
-          </ul>
 
-          {/* Mobile Controls */}
-          <div className="md:hidden flex items-center gap-3">
-
-            {/* Dark Mode Toggle */}
-            <button onClick={handleThemeToggle} className="p-2">
+            <button onClick={handleThemeToggle} className="ml-4 p-2">
               <img
                 src={
                   darkMode
@@ -96,54 +126,22 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
                 alt="theme"
               />
             </button>
-
-            {/* Animated Hamburger */}
-            <button
-              onClick={() => setOpen(!open)}
-              className="relative w-8 h-8 flex flex-col justify-center items-center"
-            >
-              <motion.span
-                animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="w-6 h-[2px] bg-current mb-1"
-              />
-              <motion.span
-                animate={open ? { opacity: 0 } : { opacity: 1 }}
-                className="w-6 h-[2px] bg-current mb-1"
-              />
-              <motion.span
-                animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="w-6 h-[2px] bg-current"
-              />
-            </button>
-
-          </div>
+          </ul>
         </div>
       </motion.nav>
 
-      {/* BACKDROP */}
+      {/* MOBILE DROPDOWN MENU (FROM TOP) */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* SLIDE-IN DRAWER */}
-      <AnimatePresence>
-        {open && (
-          <motion.aside
             ref={menuRef}
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 260, damping: 25 }}
-            className="fixed top-0 right-0 h-full w-72 bg-white dark:bg-gray-900 z-50 shadow-xl"
+            initial={{ y: "-100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "-100%", opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
           >
-            <ul className="flex flex-col pt-24">
+            <ul className="flex flex-col pt-24 pb-6">
               {links.map((item) => {
                 const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
                 const active = location.pathname === path;
@@ -164,7 +162,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
                 );
               })}
             </ul>
-          </motion.aside>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
