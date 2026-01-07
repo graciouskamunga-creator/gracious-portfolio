@@ -13,7 +13,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
     setOpen(false);
   }, [location.pathname]);
 
-  /* Sticky effect */
+  /* Sticky shadow on scroll (NO blur, NO transparency) */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
@@ -27,7 +27,6 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
         setOpen(false);
       }
     };
-
     if (open) document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
@@ -39,62 +38,28 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
     else if (setDarkMode) setDarkMode(!darkMode);
   };
 
+  const NAV_HEIGHT = "h-16"; // used to offset dropdown
+
   return (
     <>
       {/* NAVBAR */}
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 w-full z-50 transition-all ${
+        className={`fixed top-0 w-full z-50 ${NAV_HEIGHT} ${
           scrolled
             ? "bg-white dark:bg-gray-900 shadow-md"
             : "bg-white dark:bg-gray-900"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
 
-          {/* LEFT: Hamburger (mobile only) */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setOpen(!open)}
-              className="relative w-8 h-8 flex flex-col justify-center items-center"
-            >
-              <motion.span
-                animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="w-6 h-[2px] bg-current mb-1"
-              />
-              <motion.span
-                animate={open ? { opacity: 0 } : { opacity: 1 }}
-                className="w-6 h-[2px] bg-current mb-1"
-              />
-              <motion.span
-                animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="w-6 h-[2px] bg-current"
-              />
-            </button>
-          </div>
-
-          {/* CENTER: Logo */}
-          <h1 className="font-bold text-lg md:text-xl">
+          {/* LEFT: LOGO */}
+          <h1 className="font-bold text-lg md:text-xl whitespace-nowrap">
             GRACIOUS KAMUNGA
           </h1>
 
-          {/* RIGHT: Dark mode (mobile) */}
-          <div className="md:hidden">
-            <button onClick={handleThemeToggle} className="p-2">
-              <img
-                src={
-                  darkMode
-                    ? "https://cdn-icons-png.flaticon.com/512/869/869869.png"
-                    : "https://cdn-icons-png.flaticon.com/512/6714/6714978.png"
-                }
-                className="w-5 h-5"
-                alt="theme"
-              />
-            </button>
-          </div>
-
-          {/* DESKTOP MENU */}
+          {/* RIGHT: Desktop menu */}
           <ul className="hidden md:flex gap-6 items-center">
             {links.map((item) => {
               const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
@@ -115,7 +80,8 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
               );
             })}
 
-            <button onClick={handleThemeToggle} className="ml-4 p-2">
+            {/* Dark mode (desktop) */}
+            <button onClick={handleThemeToggle} className="ml-2 p-2">
               <img
                 src={
                   darkMode
@@ -127,21 +93,54 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
               />
             </button>
           </ul>
+
+          {/* RIGHT: Mobile controls (Hamburger + Dark mode together) */}
+          <div className="md:hidden flex items-center gap-3">
+            <button onClick={handleThemeToggle} className="p-2">
+              <img
+                src={
+                  darkMode
+                    ? "https://cdn-icons-png.flaticon.com/512/869/869869.png"
+                    : "https://cdn-icons-png.flaticon.com/512/6714/6714978.png"
+                }
+                className="w-5 h-5"
+                alt="theme"
+              />
+            </button>
+
+            <button
+              onClick={() => setOpen(!open)}
+              className="relative w-8 h-8 flex flex-col justify-center items-center"
+            >
+              <motion.span
+                animate={open ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                className="w-6 h-[2px] bg-current mb-1"
+              />
+              <motion.span
+                animate={open ? { opacity: 0 } : { opacity: 1 }}
+                className="w-6 h-[2px] bg-current mb-1"
+              />
+              <motion.span
+                animate={open ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                className="w-6 h-[2px] bg-current"
+              />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
-      {/* MOBILE DROPDOWN MENU (FROM TOP) */}
+      {/* MOBILE DROPDOWN (STARTS BELOW NAVBAR – NO OVERLAP) */}
       <AnimatePresence>
         {open && (
           <motion.div
             ref={menuRef}
-            initial={{ y: "-100%", opacity: 0 }}
+            initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "-100%", opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
+            exit={{ y: -20, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed top-16 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
           >
-            <ul className="flex flex-col pt-24 pb-6">
+            <ul className="flex flex-col py-4">
               {links.map((item) => {
                 const path = item === "Home" ? "/" : `/${item.toLowerCase()}`;
                 const active = location.pathname === path;
