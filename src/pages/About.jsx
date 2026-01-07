@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import SEO from "../components/SEO";
 import PageWrapper from "../components/PageWrapper";
-//import Navbar from "../components/navbar";
+import Navbar from "../components/navbar";
 
 export default function About() {
   const location = useLocation();
