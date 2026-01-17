@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import SEO from "../components/SEO";
 import PageWrapper from "../components/PageWrapper";
-import Navbar from "../components/navbar";
 
 const heroVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -68,7 +67,6 @@ export default function Home() {
   return (
     <PageWrapper>
       {/* NAVBAR */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <SEO
         title="Gracious Kamunga | Full-Stack Software Engineer"
