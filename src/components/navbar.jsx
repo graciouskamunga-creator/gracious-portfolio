@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const menuRef = useRef(null);
 
@@ -12,13 +11,6 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
-
-  /* Shadow on scroll ONLY (no blur, no transparency) */
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   /* Close on outside click */
   useEffect(() => {
@@ -44,21 +36,20 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
       <motion.nav
         initial={{ y: -80 }}
         animate={{ y: 0 }}
+        className="fixed top-0 left-0 w-full z-50 h-16 bg-white dark:bg-gray-900"
         style={{
           backdropFilter: "none",
           WebkitBackdropFilter: "none",
           filter: "none",
+          boxShadow: "none",
         }}
-        className={`fixed top-0 w-full z-50 h-16 ${
-          scrolled ? "shadow-md" : ""
-        } bg-white dark:bg-gray-900`}
       >
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
 
-          {/* LOGO */}
-          <h1 className="font-bold text-lg md:text-xl whitespace-nowrap">
+          {/* LOGO (ONLY ONE INSTANCE) */}
+          <Link to="/" className="font-bold text-lg md:text-xl whitespace-nowrap">
             GRACIOUS KAMUNGA
-          </h1>
+          </Link>
 
           {/* DESKTOP MENU */}
           <ul className="hidden md:flex gap-6 items-center">
@@ -81,7 +72,6 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
               );
             })}
 
-            {/* Dark mode desktop */}
             <button onClick={handleThemeToggle} className="p-2">
               <img
                 src={
@@ -95,7 +85,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
             </button>
           </ul>
 
-          {/* MOBILE CONTROLS (RIGHT) */}
+          {/* MOBILE CONTROLS */}
           <div className="md:hidden flex items-center gap-3">
             <button onClick={handleThemeToggle} className="p-2">
               <img
@@ -130,7 +120,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
         </div>
       </motion.nav>
 
-      {/* MOBILE MENU – SOLID, NO OPACITY, NO BLUR */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -139,12 +129,12 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
             animate={{ y: 0 }}
             exit={{ y: -10 }}
             transition={{ duration: 0.2 }}
+            className="fixed top-16 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
             style={{
               backdropFilter: "none",
               WebkitBackdropFilter: "none",
               filter: "none",
             }}
-            className="fixed top-16 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
           >
             <ul className="flex flex-col py-4">
               {links.map((item) => {
