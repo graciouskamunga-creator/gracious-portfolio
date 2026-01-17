@@ -20,7 +20,8 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
       }
     };
     if (open) document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () =>
+      document.removeEventListener("mousedown", handleClickOutside);
   }, [open]);
 
   const links = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
@@ -32,24 +33,14 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
 
   return (
     <>
-      {/* NAVBAR */}
-      <motion.nav
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        className="fixed top-0 left-0 w-full z-50 h-16 bg-white dark:bg-gray-900"
-        style={{
-          backdropFilter: "none",
-          WebkitBackdropFilter: "none",
-          filter: "none",
-          boxShadow: "none",
-        }}
-      >
+      {/* NAVBAR – NO INITIAL ANIMATION */}
+      <nav className="fixed top-0 w-full z-50 h-16 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
 
-          {/* LOGO (ONLY ONE INSTANCE) */}
-          <Link to="/" className="font-bold text-lg md:text-xl whitespace-nowrap">
+          {/* LOGO */}
+          <h1 className="font-bold text-lg md:text-xl whitespace-nowrap">
             GRACIOUS KAMUNGA
-          </Link>
+          </h1>
 
           {/* DESKTOP MENU */}
           <ul className="hidden md:flex gap-6 items-center">
@@ -118,9 +109,9 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* MOBILE MENU */}
+      {/* MOBILE DROPDOWN */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -130,11 +121,6 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
             exit={{ y: -10 }}
             transition={{ duration: 0.2 }}
             className="fixed top-16 left-0 w-full bg-white dark:bg-gray-900 z-40 shadow-lg md:hidden"
-            style={{
-              backdropFilter: "none",
-              WebkitBackdropFilter: "none",
-              filter: "none",
-            }}
           >
             <ul className="flex flex-col py-4">
               {links.map((item) => {
