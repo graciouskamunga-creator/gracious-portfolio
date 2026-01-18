@@ -58,15 +58,7 @@ export default function About() {
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
 
       {/* NAVBAR */}
-      <Navbar
-        links={links}
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        menuOpen={menuOpen}
-        setMenuOpen={setMenuOpen}
-        scrolled={scrolled}
-      />
-
+  
       {/* Mobile Backdrop */}
       <AnimatePresence>
         {menuOpen && (
@@ -213,7 +205,7 @@ export default function About() {
           </p>
           <a
             href="/contact"
-            className="inline-block px-6 py-3 bg-slate-900 dark:bg-white dark:text-black text-white rounded-lg"
+            className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
           >
             Contact Me
           </a>
