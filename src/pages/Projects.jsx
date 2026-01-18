@@ -78,7 +78,6 @@ export default function Projects() {
   return (
     <PageWrapper>
       {/* NAVBAR */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <SEO
         title="Projects | Gracious Kamunga – Full-Stack Software Developer"

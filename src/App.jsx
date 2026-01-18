@@ -10,7 +10,6 @@ import Skills from "./pages/Skills";
 import Services from "./pages/Services";
 import Navbar from "./components/navbar";
 
-
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingActionButton from "./components/FloatingActionButton";
 
@@ -21,7 +20,6 @@ export default function App() {
     localStorage.getItem("theme") === "dark"
   );
 
-  /* Dark mode persistence */
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -35,30 +33,92 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
 
-      {/* NAVBAR (NEW COMPONENT) */}
       <Navbar darkMode={darkMode} toggleTheme={() => setDarkMode(!darkMode)} />
 
       <ScrollToTop />
 
-      {/* CONTENT */}
       <main className="max-w-5xl mx-auto px-6 pt-28 pb-20">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35 }}
-          >
-            <Routes location={location}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </motion.div>
+          <Routes location={location} key={location.pathname}>
+            <Route
+              path="/"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Home />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <About />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/services"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Services />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/skills"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Skills />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/projects"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Projects />
+                </motion.div>
+              }
+            />
+            <Route
+              path="/contact"
+              element={
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Contact />
+                </motion.div>
+              }
+            />
+          </Routes>
         </AnimatePresence>
       </main>
 

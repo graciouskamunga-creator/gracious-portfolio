@@ -80,7 +80,6 @@ export default function Services() {
   return (
     <PageWrapper>
       {/* NAVBAR */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <SEO
         title="Gracious Kamunga | Software Development Services"

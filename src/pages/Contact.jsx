@@ -52,7 +52,6 @@ export default function Contact() {
   return (
     <PageWrapper>
       {/* NAVBAR */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <SEO
         title="Gracious Kamunga | Contact"

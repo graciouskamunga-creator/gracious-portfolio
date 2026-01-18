@@ -88,7 +88,6 @@ export default function Skills() {
   return (
     <PageWrapper>
       {/* NAVBAR */}
-      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <section className="pt-28 px-6 max-w-6xl mx-auto">
 
