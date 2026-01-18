@@ -22,7 +22,7 @@ const projects = [
     tech: ["C#", ".NET", "SQL Server"],
     impact: "Improved issue tracking efficiency and data consistency.",
     link: "#",
-    github: "#",
+    github: "https://github.com/graciouskamunga-creator/CivoTicketingSystem",
   },
   {
     title: "Web Application Platform",
@@ -40,7 +40,7 @@ const projects = [
     tech: ["Flutter", "Flutterwave", "Firebase"],
     impact: "Enabled seamless service booking and secure payments.",
     link: "#",
-    github: "#",
+    github: "https://github.com/graciouskamunga-creator/car-wash",
   },
   {
     title: "Legal-Aid Web App",
