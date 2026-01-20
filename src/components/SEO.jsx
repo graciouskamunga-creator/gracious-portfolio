@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 
 export default function SEO({ title, description }) {
+  const siteName = 'Gracious Kamunga';
   const siteUrl = 'https://your-domain.vercel.app';
-  const image = `${siteUrl}/og-image.png`;
+  const image = `${siteUrl}/logo.png`;
 
   return (
     <Helmet>

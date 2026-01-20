@@ -67,7 +67,6 @@ export default function Home() {
 
   return (
     <PageWrapper>
-      {/* NAVBAR */}
 
       <SEO
         title="Gracious Kamunga | Full-Stack Software Developer"
@@ -122,14 +121,14 @@ export default function Home() {
                 Get In Touch
               </Link>
 
-              <Link
-                to="/Gracious_Kamunga_CV.pdf"
+              <a
+                href="/Gracious_Kamunga_CV.pdf"
                 download
                 className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
 
               >
                 Download CV
-              </Link>
+              </a>
             </div>
           </motion.div>
 
@@ -354,15 +353,14 @@ export default function Home() {
           >
             Contact Me
           </Link>
-          <Link
-            to="/Gracious_Kamunga_CV.pdf"
+          <a
+            href="/Gracious_Kamunga_CV.pdf"
             download
             className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
          
-
           >
             Download CV
-          </Link>
+          </a>
         </div>
       </motion.section>
     </PageWrapper>
