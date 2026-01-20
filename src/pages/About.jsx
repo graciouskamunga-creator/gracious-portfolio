@@ -56,8 +56,6 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
-
-      {/* NAVBAR */}
   
       {/* Mobile Backdrop */}
       <AnimatePresence>
@@ -142,7 +140,7 @@ export default function About() {
               { year: "2021", title: "Advanced Diploma in Computing – NACIT", desc: "Built strong foundations in programming, databases, and system analysis." },
               { year: "2022", title: "Junior Software Developer", desc: "Developed PHP & MySQL systems, desktop applications in C#, and REST APIs." },
               { year: "2023", title: "Mobile & Web Developer", desc: "Built Flutter & React Native apps integrated with Firebase and Supabase." },
-              { year: "2024 – Present", title: "Full-Stack Software Engineer", desc: "Delivering scalable full-stack solutions across web, mobile, and cloud." },
+              { year: "2024 – Present", title: "Full-Stack Software Developer", desc: "Delivering scalable full-stack solutions across web, mobile, and cloud." },
             ].map((item) => (
               <motion.div
                 key={item.year}
@@ -203,12 +201,12 @@ export default function About() {
           <p className="text-slate-600 dark:text-slate-400 mb-6">
             Open to full-time roles, remote opportunities, and impactful projects.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
           >
             Contact Me
-          </a>
+          </Link>
         </section>
       </PageWrapper>
     </div>

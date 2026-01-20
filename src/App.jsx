@@ -8,7 +8,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Skills from "./pages/Skills";
 import Services from "./pages/Services";
+
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 import ScrollToTop from "./components/ScrollToTop";
 import FloatingActionButton from "./components/FloatingActionButton";
@@ -33,11 +35,15 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
 
-      <Navbar darkMode={darkMode} toggleTheme={() => setDarkMode(!darkMode)} />
+      <Navbar
+        darkMode={darkMode}
+        toggleTheme={() => setDarkMode(!darkMode)}
+      />
 
       <ScrollToTop />
 
-      <main className="max-w-5xl mx-auto px-6 pt-28 pb-20">
+      <main className=" mx-auto w-full max-w-screen-xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-10 pt-28 pb-24">
+
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
@@ -53,6 +59,7 @@ export default function App() {
                 </motion.div>
               }
             />
+
             <Route
               path="/about"
               element={
@@ -66,6 +73,7 @@ export default function App() {
                 </motion.div>
               }
             />
+
             <Route
               path="/services"
               element={
@@ -79,6 +87,7 @@ export default function App() {
                 </motion.div>
               }
             />
+
             <Route
               path="/skills"
               element={
@@ -92,6 +101,7 @@ export default function App() {
                 </motion.div>
               }
             />
+
             <Route
               path="/projects"
               element={
@@ -105,6 +115,7 @@ export default function App() {
                 </motion.div>
               }
             />
+
             <Route
               path="/contact"
               element={
@@ -124,9 +135,9 @@ export default function App() {
 
       <FloatingActionButton pathname={location.pathname} />
 
-      <footer className="border-t py-6 text-center text-sm text-slate-600 dark:text-slate-400">
-        © {new Date().getFullYear()} Gracious Kamunga – Full-Stack Software Developer
-      </footer>
+      {/*FOOTER COMPONENT */}
+      <Footer />
+
     </div>
   );
 }

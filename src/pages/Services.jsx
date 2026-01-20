@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import SEO from "../components/SEO";
 import Navbar from "../components/navbar";
+import { Link } from "react-router-dom";
 
 import {
   Code2,
@@ -140,12 +141,12 @@ export default function Services() {
             Have a project in mind or looking for a reliable developer?
           </p>
 
-          <a
-            href="/contact"
+          <Link
+            to="/Contact"
             className="inline-block px-8 py-3 rounded-xl bg-indigo-600 text-white font-medium hover:bg-indigo-700 transition"
           >
             Let’s Work Together
-          </a>
+          </Link>
         </motion.div>
       </motion.section>
     </PageWrapper>

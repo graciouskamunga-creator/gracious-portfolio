@@ -41,7 +41,7 @@ const skills = [
   },
   {
     name: "C# (.NET)",
-    level: 70,
+    level: 80,
     badge: "Secondary",
     icon: "csharp",
     projects: ["Desktop Management System"],

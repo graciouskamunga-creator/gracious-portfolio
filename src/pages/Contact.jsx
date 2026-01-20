@@ -1,15 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import SEO from "../components/SEO";
-import Navbar from "../components/navbar";
 import emailjs from "@emailjs/browser";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
-
 
 export default function Contact() {
   const formRef = useRef();
@@ -19,7 +17,7 @@ export default function Contact() {
   );
 
   /* Dark mode persistence */
-  React.useEffect(() => {
+  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
@@ -51,14 +49,11 @@ export default function Contact() {
 
   return (
     <PageWrapper>
-      {/* NAVBAR */}
-
       <SEO
         title="Gracious Kamunga | Contact"
-        description="Get in touch with Gracious Kamunga, Full-Stack Software Engineer."
+        description="Get in touch with Gracious Kamunga, Full-Stack Software Developer."
       />
 
-      {/* CONTACT FORM */}
       <motion.section
         className="flex justify-center py-12 px-4"
         initial="hidden"
@@ -71,13 +66,19 @@ export default function Contact() {
           <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="space-y-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md"
+            className="space-y-4 p-6 rounded-xl shadow-md 
+                       bg-white dark:bg-gray-800
+                       text-slate-900 dark:text-white"
           >
             <input
               name="name"
               placeholder="Name"
               required
-              className="w-full px-4 py-3 border rounded-lg dark:bg-gray-700"
+              className="w-full px-4 py-3 rounded-lg border 
+                         bg-white dark:bg-gray-900
+                         text-slate-900 dark:text-white
+                         border-slate-300 dark:border-gray-700
+                         focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
 
             <input
@@ -85,7 +86,11 @@ export default function Contact() {
               type="email"
               placeholder="Email"
               required
-              className="w-full px-4 py-3 border rounded-lg dark:bg-gray-700"
+              className="w-full px-4 py-3 rounded-lg border 
+                         bg-white dark:bg-gray-900
+                         text-slate-900 dark:text-white
+                         border-slate-300 dark:border-gray-700
+                         focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
 
             <textarea
@@ -93,18 +98,27 @@ export default function Contact() {
               rows="5"
               placeholder="Message"
               required
-              className="w-full px-4 py-3 border rounded-lg dark:bg-gray-700"
+              className="w-full px-4 py-3 rounded-lg border 
+                         bg-white dark:bg-gray-900
+                         text-slate-900 dark:text-white
+                         border-slate-300 dark:border-gray-700
+                         focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
 
             <button
               type="submit"
-              className="w-full py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800"
+              className="w-full px-6 py-3 bg-indigo-600 text-white 
+                         rounded-lg hover:bg-indigo-700 transition"
             >
               Send Message
             </button>
           </form>
 
-          {status && <p className="mt-4 text-center text-sm">{status}</p>}
+          {status && (
+            <p className="mt-4 text-center text-sm text-slate-600 dark:text-slate-400">
+              {status}
+            </p>
+          )}
         </div>
       </motion.section>
     </PageWrapper>

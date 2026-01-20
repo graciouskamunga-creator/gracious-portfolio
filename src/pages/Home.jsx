@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import SEO from "../components/SEO";
 import PageWrapper from "../components/PageWrapper";
 
+
 const heroVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: (i = 1) => ({
@@ -69,8 +70,8 @@ export default function Home() {
       {/* NAVBAR */}
 
       <SEO
-        title="Gracious Kamunga | Full-Stack Software Engineer"
-        description="Full-Stack Software Engineer in Malawi specializing in React, Flutter, Firebase, Node.js, and scalable systems."
+        title="Gracious Kamunga | Full-Stack Software Developer"
+        description="Full-Stack Software Developer in Malawi specializing in React, Flutter, Firebase, Node.js, and scalable systems."
       />
 
       {/* HERO */}
@@ -90,8 +91,10 @@ export default function Home() {
             </motion.h1>
 
             <motion.p className="text-lg leading-relaxed mb-4 text-slate-600 dark:text-slate-300">
-              Full-Stack Software Developer building scalable web & mobile
-              applications with modern technologies.
+             I am a dedicated Full-Stack Software Developer with a strong foundation in web and mobile
+             application development. I hold an Advanced Diploma in Computing from NACIT and have
+             hands-on experience building scalable, secure, and user-centered applications. I am highly
+             adaptable, detail-oriented, and thrive in fast-paced startup and enterprise environments.
             </motion.p>
 
             <motion.span
@@ -105,25 +108,28 @@ export default function Home() {
             <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
               <Link
                 to="/projects"
-                className="px-6 py-3 bg-slate-900 dark:bg-white dark:text-black text-white rounded-lg"
+                className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
+
               >
                 See My Projects
               </Link>
 
               <Link
                 to="/contact"
-                className="px-6 py-3 border border-slate-900 dark:border-white rounded-lg"
+                className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
+
               >
                 Get In Touch
               </Link>
 
-              <a
-                href="/Gracious_Kamunga_CV.pdf"
+              <Link
+                to="/Gracious_Kamunga_CV.pdf"
                 download
-                className="px-6 py-3 border border-slate-900 dark:border-white rounded-lg"
+                className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
+
               >
                 Download CV
-              </a>
+              </Link>
             </div>
           </motion.div>
 
@@ -343,17 +349,20 @@ export default function Home() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             to="/contact"
-            className="px-6 py-3 bg-slate-900 dark:bg-white dark:text-black text-white rounded-lg"
+            className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
+
           >
             Contact Me
           </Link>
-          <a
-            href="/Gracious_Kamunga_CV.pdf"
+          <Link
+            to="/Gracious_Kamunga_CV.pdf"
             download
-            className="px-6 py-3 border border-slate-900 dark:border-white rounded-lg"
+            className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-900"
+         
+
           >
             Download CV
-          </a>
+          </Link>
         </div>
       </motion.section>
     </PageWrapper>

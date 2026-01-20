@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import PageWrapper from "../components/PageWrapper";
 import SEO from "../components/SEO";
-import Navbar from "../components/navbar";
 import { ExternalLink, Github } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const projects = [
   {
@@ -180,12 +180,12 @@ export default function Projects() {
           I'm open to full-time roles, freelance projects, and impactful software
           collaborations.
         </p>
-        <a
-          href="/contact"
+        <Link
+          to="/Contact"
           className="inline-block px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
         >
           Get in Touch
-        </a>
+        </Link>
       </section>
     </PageWrapper>
   );
