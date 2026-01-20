@@ -33,7 +33,7 @@ export default function App() {
   }, [darkMode]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
+    <div className="min-h-screen overflow-x-hidden bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
 
       <Navbar
         darkMode={darkMode}
