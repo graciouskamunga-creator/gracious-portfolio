@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Link from "next/link"; //import Link for Next.js routing
+import { Link } from "react-router-dom"; // React Router Link for Vite + React
 
 const footerVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -53,7 +53,7 @@ export default function Footer() {
             {["Home", "About", "Services", "Projects", "Contact"].map((item) => (
               <li key={item}>
                 <Link
-                  href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
+                  to={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   className="hover:text-indigo-600 transition"
                 >
                   {item}
