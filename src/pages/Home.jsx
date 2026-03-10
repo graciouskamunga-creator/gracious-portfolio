@@ -91,8 +91,7 @@ export default function Home() {
 
             <motion.p className="text-lg leading-relaxed mb-4 text-slate-600 dark:text-slate-300">
              I am a dedicated Full-Stack Software Developer with a strong foundation in web and mobile
-             application development. I hold an Advanced Diploma in Computing from NACIT and have
-             hands-on experience building scalable, secure, and user-centered applications. I am highly
+             application development. I have hands-on experience building scalable, secure, and user-centered applications. I am highly
              adaptable, detail-oriented, and thrive in fast-paced startup and enterprise environments.
             </motion.p>
 

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import Link from "next/link"; //import Link for Next.js routing
 
 const footerVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -51,12 +52,12 @@ export default function Footer() {
           <ul className="space-y-2">
             {["Home", "About", "Services", "Projects", "Contact"].map((item) => (
               <li key={item}>
-                <a
+                <Link
                   href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
                   className="hover:text-indigo-600 transition"
                 >
                   {item}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

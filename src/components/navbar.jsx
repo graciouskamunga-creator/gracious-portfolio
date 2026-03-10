@@ -39,7 +39,7 @@ export default function Navbar({ darkMode, setDarkMode, toggleTheme }) {
 
           {/* LOGO */}
           <h1 className="font-bold text-lg md:text-xl whitespace-nowrap">
-            GRACIOUS KAMUNGA
+            GK
           </h1>
 
           {/* DESKTOP MENU */}
