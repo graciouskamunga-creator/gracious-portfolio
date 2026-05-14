@@ -55,7 +55,7 @@ export default function Contact() {
       />
 
       <motion.section
-        className="flex justify-center py-12 px-4"
+        className="site-content flex justify-center py-12"
         initial="hidden"
         animate="visible"
         variants={fadeUp}

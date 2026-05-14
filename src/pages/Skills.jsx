@@ -89,7 +89,8 @@ export default function Skills() {
     <PageWrapper>
       {/* NAVBAR */}
 
-      <section className="pt-28 px-6 max-w-6xl mx-auto">
+      <section className="site-content pt-28">
+        <div className="mx-auto w-full max-w-6xl">
 
         {/* HEADER */}
         <motion.div
@@ -211,6 +212,7 @@ export default function Skills() {
           )}
         </AnimatePresence>
 
+        </div>
       </section>
     </PageWrapper>
   );

@@ -74,7 +74,7 @@ export default function Home() {
       />
 
       {/* HERO */}
-      <section className="pt-12 px-4 sm:px-6 lg:px-8">
+      <section className="site-content pt-12">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <motion.div
             className="space-y-4 text-center md:text-left"
@@ -162,7 +162,7 @@ export default function Home() {
 
       {/* EXPERIENCE STATS */}
       <motion.section
-        className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center px-4 sm:px-6 lg:px-8"
+        className="site-content mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -184,7 +184,7 @@ export default function Home() {
       </motion.section>
 
       {/* SERVICES */}
-      <section className="mt-20 px-4 sm:px-6 lg:px-8">
+      <section className="site-content mt-20">
         <h3 className="text-xl font-semibold mb-6">What I Do</h3>
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
           {[
@@ -221,7 +221,7 @@ export default function Home() {
       </section>
 
       {/* TECHNOLOGIES AS CARDS */}
-      <section className="mt-20 px-4 sm:px-6 lg:px-8">
+      <section className="site-content mt-20">
         <h3 className="text-xl font-semibold mb-6">Technologies I Work With</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {skills.map((skill) => (
@@ -247,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* SKILL PROFICIENCY */}
-      <section className="mt-20 px-4 sm:px-6 lg:px-8">
+      <section className="site-content mt-20">
         <h3 className="text-xl font-semibold mb-6">Skill Proficiency</h3>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {skillLevels.map((skill) => (
@@ -279,7 +279,7 @@ export default function Home() {
 
       {/* WHY WORK WITH ME */}
       <motion.section
-        className="mt-20 bg-gray-50 dark:bg-gray-900 p-8 rounded-xl px-4 sm:px-6 lg:px-8"
+        className="site-content mt-20 bg-gray-50 dark:bg-gray-900 rounded-xl"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -297,7 +297,7 @@ export default function Home() {
 
       {/* SOCIAL LINKS */}
       <motion.section
-        className="mt-20 text-center px-4 sm:px-6 lg:px-8"
+        className="site-content mt-20 text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -334,7 +334,7 @@ export default function Home() {
 
       {/* FINAL CTA */}
       <motion.section
-        className="mt-24 text-center px-4 sm:px-6 lg:px-8"
+        className="site-content mt-24 text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

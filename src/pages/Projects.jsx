@@ -85,7 +85,8 @@ export default function Projects() {
       />
 
       {/* HERO */}
-      <section className="pt-24 px-6 max-w-6xl mx-auto text-center">
+      <section className="site-content pt-24 text-center">
+        <div className="mx-auto w-full max-w-6xl">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
           Selected Projects
         </h1>
@@ -93,10 +94,12 @@ export default function Projects() {
           A collection of real-world software solutions showcasing full-stack,
           mobile, and cloud development expertise.
         </p>
+        </div>
       </section>
 
       {/* FILTERS */}
-      <section className="mt-12 px-6 max-w-6xl mx-auto flex flex-wrap justify-center gap-3">
+      <section className="site-content mt-12">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap justify-center gap-3">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -111,10 +114,12 @@ export default function Projects() {
             {cat}
           </button>
         ))}
+        </div>
       </section>
 
       {/* PROJECT GRID */}
-      <section className="mt-16 px-6 max-w-6xl mx-auto">
+      <section className="site-content mt-16">
+        <div className="mx-auto w-full max-w-6xl">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, i) => (
             <motion.article
@@ -171,10 +176,11 @@ export default function Projects() {
             </motion.article>
           ))}
         </div>
+        </div>
       </section>
 
       {/* CTA */}
-      <section className="mt-28 text-center px-6">
+      <section className="site-content mt-28 text-center">
         <h2 className="text-2xl font-semibold mb-3">Want to Collaborate?</h2>
         <p className="text-slate-600 dark:text-slate-400 mb-6">
           I'm open to full-time roles, freelance projects, and impactful software

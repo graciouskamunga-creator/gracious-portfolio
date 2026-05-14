@@ -88,12 +88,13 @@ export default function Services() {
       />
 
       <motion.section
-        className="px-4 sm:px-6 lg:px-8 py-12 max-w-6xl mx-auto"
+        className="site-content py-12"
         variants={container}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
+        <div className="mx-auto w-full max-w-6xl">
         {/* Header */}
         <motion.div
           variants={item}
@@ -148,6 +149,7 @@ export default function Services() {
             Let’s Work Together
           </Link>
         </motion.div>
+        </div>
       </motion.section>
     </PageWrapper>
   );

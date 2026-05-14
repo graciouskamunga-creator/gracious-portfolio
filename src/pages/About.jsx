@@ -14,7 +14,6 @@ export default function About() {
 
   const links = ["Home", "About", "Services", "Skills", "Projects", "Contact"];
 
-  // Dark mode persistence
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -25,19 +24,16 @@ export default function About() {
     }
   }, [darkMode]);
 
-  // Auto close mobile menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  // Sticky navbar effect
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on outside click
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -49,15 +45,13 @@ export default function About() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [menuOpen]);
 
-  // Hero scroll animation
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
-  
-      {/* Mobile Backdrop */}
+    <div className="w-full min-h-screen bg-slate-50 dark:bg-gray-900 text-slate-900 dark:text-white transition-colors duration-500">
+
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -69,7 +63,6 @@ export default function About() {
         )}
       </AnimatePresence>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {menuOpen && (
           <motion.aside
@@ -104,18 +97,16 @@ export default function About() {
         )}
       </AnimatePresence>
 
-      {/* PAGE CONTENT */}
       <PageWrapper>
         <SEO
           title="About Gracious Kamunga | Full-Stack Software Developer"
           description="Full-Stack Software Developer skilled in React, Flutter, Node.js, Firebase, SQL, and scalable system architecture."
         />
 
-        {/* HERO */}
         <motion.section
           ref={ref}
           style={{ y }}
-          className="pt-28 max-w-5xl mx-auto px-6 text-center space-y-4"
+          className="site-content pt-28 text-center space-y-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -132,8 +123,7 @@ export default function About() {
           </a>
         </motion.section>
 
-        {/* CAREER TIMELINE */}
-        <section className="mt-24 max-w-5xl mx-auto px-6">
+        <section className="site-content mt-24">
           <h2 className="text-3xl font-bold mb-8">Career Timeline</h2>
           <div className="space-y-6 border-l-2 border-indigo-500 pl-6">
             {[
@@ -157,8 +147,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
-        <section className="mt-24 max-w-5xl mx-auto px-6">
+        <section className="site-content mt-24">
           <h2 className="text-3xl font-bold mb-8">Testimonials</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -178,8 +167,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* CORE EXPERTISE */}
-        <section className="mt-24 max-w-5xl mx-auto px-6">
+        <section className="site-content mt-24">
           <h2 className="text-3xl font-bold mb-6">Core Expertise</h2>
           <div className="flex flex-wrap gap-3">
             {[
@@ -195,8 +183,7 @@ export default function About() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="mt-28 text-center px-6">
+        <section className="site-content mt-28 text-center">
           <h2 className="text-2xl font-semibold mb-3">Ready to Build Scalable Solutions</h2>
           <p className="text-slate-600 dark:text-slate-400 mb-6">
             Open to full-time roles, remote opportunities, and impactful projects.

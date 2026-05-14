@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; // React Router Link for Vite + React
+import { Link } from "react-router-dom";
 
 const footerVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -26,9 +26,9 @@ export default function Footer() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="border-t border-slate-200 dark:border-gray-800 mt-20"
+      className="w-full border-t border-slate-200 dark:border-gray-800 mt-20"
     >
-      <div className="max-w-6xl mx-auto px-6 py-10 grid gap-8 md:grid-cols-3 text-sm">
+      <div className="site-footer-content mx-auto grid gap-8 md:grid-cols-3 text-sm">
 
         {/* BRAND */}
         <motion.div variants={itemVariants} className="text-center md:text-left">
@@ -107,7 +107,7 @@ export default function Footer() {
       {/* COPYRIGHT */}
       <motion.div
         variants={itemVariants}
-        className="border-t border-slate-200 dark:border-gray-800 py-4 text-center text-xs text-slate-500"
+        className="site-footer-content border-t border-slate-200 dark:border-gray-800 !py-[19px] text-center text-xs text-slate-500"
       >
         © {new Date().getFullYear()} Gracious Kamunga. All rights reserved.
       </motion.div>

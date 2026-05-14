@@ -11,8 +11,9 @@ const pageVariants = {
 
 export default function PageWrapper({ children }) {
   return (
-    <section className="pt-6">
+    <section className="site-section pt-6">
       <motion.div
+        className="w-full"
         variants={pageVariants}
         initial="hidden"
         animate="visible"

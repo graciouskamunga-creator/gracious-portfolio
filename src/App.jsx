@@ -42,14 +42,14 @@ export default function App() {
 
       <ScrollToTop />
 
-      <main className=" mx-auto w-full max-w-screen-xl 2xl:max-w-screen-2xl px-4 sm:px-6 lg:px-10 pt-28 pb-24">
-
+      <main className="w-full pt-28 pb-24">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             <Route
               path="/"
               element={
                 <motion.div
+                  className="w-full"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -60,82 +60,87 @@ export default function App() {
               }
             />
 
-            <Route
-              path="/about"
-              element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <About />
-                </motion.div>
-              }
-            />
+              <Route
+                path="/about"
+                element={
+                  <motion.div
+                    className="w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <About />
+                  </motion.div>
+                }
+              />
 
-            <Route
-              path="/services"
-              element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <Services />
-                </motion.div>
-              }
-            />
+              <Route
+                path="/services"
+                element={
+                  <motion.div
+                    className="w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <Services />
+                  </motion.div>
+                }
+              />
 
-            <Route
-              path="/skills"
-              element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <Skills />
-                </motion.div>
-              }
-            />
+              <Route
+                path="/skills"
+                element={
+                  <motion.div
+                    className="w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <Skills />
+                  </motion.div>
+                }
+              />
 
-            <Route
-              path="/projects"
-              element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <Projects />
-                </motion.div>
-              }
-            />
+              <Route
+                path="/projects"
+                element={
+                  <motion.div
+                    className="w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <Projects />
+                  </motion.div>
+                }
+              />
 
-            <Route
-              path="/contact"
-              element={
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.35 }}
-                >
-                  <Contact />
-                </motion.div>
-              }
-            />
-          </Routes>
+              <Route
+                path="/contact"
+                element={
+                  <motion.div
+                    className="w-full"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.35 }}
+                  >
+                    <Contact />
+                  </motion.div>
+                }
+              />
+            </Routes>
         </AnimatePresence>
       </main>
 
       <FloatingActionButton pathname={location.pathname} />
 
-      {/*FOOTER COMPONENT */}
+      {/* FOOTER FULL WIDTH */}
       <Footer />
 
     </div>
