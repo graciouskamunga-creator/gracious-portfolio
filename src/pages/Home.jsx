@@ -154,8 +154,20 @@ export default function Home() {
           variants={fadeUp}
         >
           <h3 className="font-semibold mb-2">Quick Info</h3>
-          <p>📞 0886 935 105 / 0993 215 578</p>
-          <p>✉️ graciouskamunga778@gmail.com</p>
+
+          <div className="flex-items-center gap-4">
+            {/*Call Icon*/ }
+            <a href="tel:+265886935105" className="flex items-center justify-center gap-2 hover: text-blue-600 transition" aria-label="Call me ">
+              <span>📞 </span>
+              <span>Call ME</span>
+              </a>
+
+            {/*Email Icon*/ }
+            <a href="mailto:graciouskamunga778@gmail.com" className="flex items-center justify-center gap-2 hover:text-blue-600 transition" aria-label="Email me">
+              <span>✉️ </span>
+              <span>Email ME</span>
+            </a>
+          </div>
           <p className="mt-2 text-sm">📍 Lilongwe, Malawi</p>
         </motion.div>
       </section>
